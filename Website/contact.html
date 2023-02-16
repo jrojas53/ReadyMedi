@@ -4,52 +4,106 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width,initial-scale=1">
         <title>Contact</title>
+        <style>
+            body {
+                background-image: url("summer_background_gradient.jpg");
+                background-size: cover;
+                margin: 0%;
+            }
+            h1 {
+                text-align: center; 
+                font-family: Tahoma, sans-serif; 
+                color: white; 
+                font-size: 80px; 
+                text-shadow: 2px 2px 5px gray; 
+                margin: 0%;
+            }
+            h2 {
+                text-align: center; 
+                font-family: Tahoma, sans-serif; 
+                color: black; 
+                text-shadow: 2px 2px 5px wheat;
+                font-size: 50px; 
+                margin: 0%;
+            }
+            ul  {
+                list-style-type: none;
+                margin: auto;
+                border: 0;
+                padding: 0;
+                top: 0;
+                overflow: hidden;
+                font-family: Tahoma, sans-serif;
+            }
+            li {
+                float: left;
+                margin-left: 20px;
+            }
+            li a {
+                display: block;
+                color: lightgray;
+                text-align: center;
+                padding: 15px;
+                font-size: 20px;
+            }
+            li a:hover:not(.active) {
+                color: white;
+            }
+            .active {
+                color: white;
+            }
+            .page {
+                height: 650px;
+                width: 100%;
+                background-color: white;
+                opacity: 50%;
+            }
+            .indiv {
+                margin: auto;
+                padding-top: 60px;
+                text-align: center;
+                font-family: Tahoma, sans-serif;
+                font-size: 40px;
+                overflow: hidden;
+                text-shadow: 2px 2px 5px ghostwhite;                
+            }
+            .footer {
+                overflow: hidden;
+                text-align: right;
+            }
+        </style>
     </head>
     <body>
         <header>
-            <nav>
-                <a href="index.html"> Home</a>
-                <a href="about.html"> About</a>
-            </nav>
+            <ul>
+                <li><a style="text-decoration: none" href="index.html"> Home</a></li>
+                <li><a style="text-decoration: none" href="about.html"> About</a></li>
+                <li><a class = "active" style="text-decoration: none" href="contact.html">Contact</a></li>
+            </ul>
         </header>        
-        <h1><i>Contact Us!</i></h1>
-        <table>
-            <tr>
-                <td><img src="blank_pfp.png" alt="Blank Profile Pic"></td>
-                <td><a href="mailto:kcoggshall@csub.edu"> Email</a>
-            </tr>
-            <tr>
-                <td>Kristine Coggshall</td>
-            </tr>
-            <tr>
-                <td><img src="blank_pfp.png" alt="Blank Profile Pic"></td>
-                <td>Blank@csub.edu</td>
-            </tr>
-            <tr>
-                <td>Michael Etchison</td>
-            </tr>
-            <tr>
-                <td><img src="blank_pfp.png" alt="Blank Profile Pic"></td>
-                <td>Blank@csub.edu</td>
-            </tr>
-            <tr>
-                <td>Sandra Flores</td>
-            </tr>
-            <tr>
-                <td><img src="blank_pfp.png" alt="Blank Profile Pic"></td>
-                <td>Blank@csub.edu</td>
-            </tr>
-            <tr>
-                <td>Julius Ryan Flores</td>
-            </tr>
-            <tr>
-                <td><img src="blank_pfp.png" alt="Blank Profile Pic"></td>
-                <td><a href="mailto:jrojas53@csub.edu"> Email</a>
-                </td>
-            </tr>
-            <tr>
-                <td>Jesus Rojas</td>
-            </tr>
-        </table>
+        <h1>Meet Our Team</h1>
+        <div class="page">
+            <h2>Our Members</h2>
+            <div class="indiv">
+                Kristine Coggshall | Full Stack Developer      
+            </div>
+            <div class="indiv">
+                Michael Etchison | Full Stack Developer 
+            </div>
+            <div class="indiv">
+                Sandra Flores | Full Stack Developer
+            </div>
+            <div class="indiv">
+                Julius Ryan Flores | Full Stack Developer
+            </div>
+            <div class="indiv">
+                Jesus Rojas | Full Stack Developer
+            </div>
+        </div>
+        <div class ="footer">
+            <a class = "active" style="text-decoration: none" href="contact.html">Contact</a>
+            <a style="text-decoration: none" href="index.html"> Home</a></li>
+            <a style="text-decoration: none" href="about.html"> About</a></li>
+        </div>
     </body>
 </html>
