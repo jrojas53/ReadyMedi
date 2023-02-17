@@ -4,27 +4,107 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width,initial-scale=1">
         <title>About</title>
+        <style>
+            body {
+                background-image: url("summer_background_gradient.jpg");
+                background-size: cover;
+                margin: 0%;
+            }
+            h1 {
+                text-align: center; 
+                font-family: Tahoma, sans-serif; 
+                color: white; 
+                font-size: 80px; 
+                text-shadow: 2px 2px 5px gray; 
+                margin: 0%;
+            }
+            h2 {
+                text-align: center; 
+                font-family: Tahoma, sans-serif; 
+                color: black; 
+                text-shadow: 2px 2px 5px wheat;
+                font-size: 50px; 
+                margin: 0%;
+            }
+            ul  {
+                list-style-type: none;
+                margin: auto;
+                border: 0;
+                padding: 0;
+                top: 0;
+                overflow: hidden;
+                font-family: Tahoma, sans-serif;
+            }
+            li {
+                float: left;
+                margin-left: 20px;
+            }
+            li a {
+                display: block;
+                color: lightgray;
+                text-align: center;
+                padding: 15px;
+                font-size: 20px;
+            }
+            li a:hover:not(.active) {
+                color: white;
+            }
+            .active {
+                color: white;
+            }
+            .page {
+                height: 650px;
+                width: 100%;
+                background-color: white;
+                opacity: 50%;
+            }
+            .statement {
+                margin: auto;
+                padding-top: 60px;
+                text-align: center;
+                font-family: Tahoma, sans-serif;
+                font-size: 35px;
+                overflow: hidden;
+                text-shadow: 2px 2px 5px ghostwhite;                
+            }
+            .footer {
+                overflow: hidden;
+                text-align: right;
+            }
+        </style>
     </head>
     <body>
         <header>
-             <nav>
-                <a href="index.html"> Home</a>
-                <a href="contact.html"> Contact</a>
-            </nav>
-        </header>
-        <h1><i>About Us</i></h1>
-        <p>
-            Lorem ipsum dolor sit amet, per ne aeque labitur consequat, prima interesset qui at. Eu qui fuisset sensibus constituam, 
-            falli mundi quo ei. An congue feugait assueverit est, liber aliquip utroque eam eu. An admodum vivendum deterruisset ius.
-            Eu has verterem volutpat, eu eum partem quodsi vituperatoribus. Quis quaestio te pri. Ea omnis gloriatur signiferumque vim, 
-            dico decore aperiam et vix, eam eius audire oporteat no. No audire molestiae nam, eos at omnis signiferumque. 
-            Quo nisl volumus euripidis no. Has in possit alienum maiestatis. Duis perfecto volutpat eum eu.
-            Id duo stet partem assueverit. Id sumo democritum has. An mel mazim delicata voluptatum, mel movet intellegam disputationi ad. 
-            Aliquam minimum cu eum. Mel inani possim nostrum te, at apeirian qualisque sed, eum et adipisci gubergren theophrastus.
-            Id vero aliquando vulputate pro, deserunt conceptam vix ne, ea vix probo oblique erroribus. Aliquip phaedrum qui ad. 
-            Ius tota evertitur philosophia et, solet primis fabellas in per. Putent feugait sit te.
-            Ad has dicat verterem, ut vix dicant melius, cu ignota indoctum vim. At has nulla elitr persecuti. Ius diam aliquid adversarium et, 
-            vis cetero labitur ornatus ut, an quot facilisi vim. Eum propriae hendrerit et.
-        </p>
+            <ul>
+                <li><a style="text-decoration: none" href="index.html"> Home</a></li>
+                <li><a class = "active" style="text-decoration: none" href="about.html"> About</a></li>
+                <li><a style="text-decoration: none" href="contact.html">Contact</a></li>
+            </ul>
+        </header>        
+        <h1>About Us</h1>
+        <div class="page">
+            <div class ="statement">
+                <h2>A message from our founders</h2>
+                <br>
+                We at ReadyMedi want to create a user experience that offers solutions with simplicity.
+                <br>
+                We all have experienced a time of feeling unwell, seeking help is natural.
+                <br>
+                This is when we are at our most vulnerabile. 
+                <br>
+                However, we strive to provide an experience
+                <br>
+                where seeking help and solutions will be an easy path.
+                <br>
+                We offer our service and accept any feedback to strive for a better user experience.
+                <br>
+                We hope our solutions feel like a helping hand in a time of need.
+            </div>
+        </div>
+        <div class ="footer">
+            <a class = "active" style="text-decoration: none" href="about.html">About</a>
+            <a style="text-decoration: none" href="index.html"> Home</a></li>
+            <a style="text-decoration: none" href="contact.html"> Contact</a></li>
+        </div>
     </body>
 </html>
