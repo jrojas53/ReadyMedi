@@ -11,3 +11,15 @@ INSERT INTO Patient VALUES (1333, 'Billy Bob Joe');
 
 -- fetch 
 SELECT * FROM Patient;
+
+CREATE TABLE Illness(
+  illid INTEGER PRIMARY KEY,
+  name TEXT NOT NULL,
+  description  TEXT NOT NULL
+);
+
+CREATE TABLE Symptoms (
+  sympid INTEGER PRIMARY KEY,
+  name TEXT NOT NULL,
+  description TEXT NOT NULL
+);
