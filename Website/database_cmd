@@ -1,0 +1,13 @@
+-- create
+CREATE TABLE Patient (
+  patId INTEGER PRIMARY KEY,
+  name TEXT NOT NULL
+);
+
+-- insert
+INSERT INTO Patient VALUES (1111, 'Billy');
+INSERT INTO Patient VALUES (1222, 'Billy Bob');
+INSERT INTO Patient VALUES (1333, 'Billy Bob Joe');
+
+-- fetch 
+SELECT * FROM Patient;
