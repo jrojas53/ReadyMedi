@@ -36,7 +36,7 @@ CREATE TABLE `Illness` (
 
 LOCK TABLES `Illness` WRITE;
 /*!40000 ALTER TABLE `Illness` DISABLE KEYS */;
-INSERT INTO `Illness` VALUES (1,'Valley Fever','fungal infection caused by coccidioides that are often breathed in'),(2,'Common Cold','viral infection of the nose and throat'),(3,'Flu','viral infection of the respiratory tract caused by influenze viruses'),(4,'Strep Throat','infection of the back of the throat caused by the bacteria Streptococcus pyogenes'),(5,'Pink Eye','Conjunctivitis, inflammation of the outer layer of the white part of the eye'),(6,'Stomach Flu','Viral gastroenteritis, inflammation and irritation of stomach and intestines'),(7,'Chickenpox','viral illness caused by varicella zoster forming itchy blisters'),(8,'Pneumonia','inflammatory condition of the lung affecting alveoli by virus or bacteria'),(9,'Asthma','long-term inflammatory disease of the aiways of the lungs causing airflow obstruction'),(10,'COVID-19','highly contagious disease caused by severe acute respiratory syndrom coronavirus 2');
+INSERT INTO `Illness` VALUES (1,'Valley Fever','fungal infection caused by coccidioides that are often breathed in'),(2,'Common Cold','viral infection of the nose and throat'),(3,'Flu','viral infection of the respiratory tract caused by influenze viruses'),(4,'Strep Throat','infection of the back of the throat caused by the bacteria Streptococcus pyogenes'),(5,'Pink Eye','Conjunctivitis, inflammation of the outer layer of the white part of the eye'),(6,'Stomach Flu','Viral gastroenteritis, inflammation and irritation of stomach and intestines'),(7,'Chickenpox','viral illness caused by varicella zoster forming itchy blisters'),(8,'Pneumonia','inflammatory condition of the lung affecting alveoli by virus or bacteria'),(9,'Asthma','long-term inflammatory disease of the aiways of the lungs causing airflow obstruction'),(10,'COVID-19','highly contagious disease caused by severe acute respiratory syndrom coronavirus 2'),(11,'Diabetes','common endocrine disease characterized by sustained high blood sugar levels');
 /*!40000 ALTER TABLE `Illness` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -59,7 +59,7 @@ CREATE TABLE `Illness_Symptoms` (
 
 LOCK TABLES `Illness_Symptoms` WRITE;
 /*!40000 ALTER TABLE `Illness_Symptoms` DISABLE KEYS */;
-INSERT INTO `Illness_Symptoms` VALUES (1,'Sore Throat'),(1,'Cough'),(1,'Fever'),(1,'Shortness of Breath'),(2,'Cough'),(2,'Sneeze');
+INSERT INTO `Illness_Symptoms` VALUES (1,'Sore Throat'),(1,'Cough'),(1,'Fever'),(1,'Shortness of Breath'),(2,'Cough'),(2,'Sneeze'),(2,'Stuffy Nose'),(2,'Watery Eyes'),(2,'Fever'),(2,'Mucus'),(3,'Fever'),(3,'Cough'),(3,'Sore Throat'),(3,'Runny or Stuffy Nose'),(3,'Muscle Aches'),(3,'Body Aches'),(3,'Headache'),(3,'Fatigue'),(4,'Throat pain'),(4,'Painful Swallowing'),(4,'Swollen, Tender Lymph Nodes'),(4,'Fever'),(4,'Headache'),(4,'Rash'),(4,'Tiny Red Spots on the back of the roof of mouth'),(5,'Pink or Red Color in the White of the Eyes'),(5,'Increased tear Production');
 /*!40000 ALTER TABLE `Illness_Symptoms` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -107,6 +107,7 @@ CREATE TABLE `Symptom` (
 
 LOCK TABLES `Symptom` WRITE;
 /*!40000 ALTER TABLE `Symptom` DISABLE KEYS */;
+INSERT INTO `Symptom` VALUES (1,'Cough'),(2,'Mucus'),(3,'Phlegm'),(4,'Sneezing'),(5,'Congestion'),(6,'Runny nose'),(7,'Loss of smell'),(8,'Chills'),(9,'Fever'),(10,'Fatigue'),(11,'Headache'),(12,'Sore Throat'),(13,'Sinus Pressure');
 /*!40000 ALTER TABLE `Symptom` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -119,4 +120,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-02-25 16:33:07
+-- Dump completed on 2023-02-25 17:21:44
