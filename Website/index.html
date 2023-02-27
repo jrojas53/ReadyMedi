@@ -3,14 +3,140 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width,initial-scale=1">
-        <title>Index</title>
+        <title>Home</title>
+        <style>
+            body {
+                background-image: url("summer_background_gradient.jpg");
+                background-size: cover;
+	            background-position: center center;
+	            background-attachment: fixed;                
+            }
+            h1 {
+                text-align: center; 
+                font-family: Tahoma, sans-serif; 
+                color: white; 
+                font-size: 80px; 
+                text-shadow: 2px 2px 5px gray; 
+                margin: 0%;
+            }
+            ul  {
+                list-style-type: none;
+                margin: auto;
+                border: 0;
+                padding: 0;
+                top: 0;
+                overflow: hidden;
+                font-family: Tahoma, sans-serif;
+            }
+            li {
+                float: left;
+                margin-left: 20px;
+            }
+            li a {
+                display: block;
+                color: lightgray;
+                text-align: center;
+                padding: 15px;
+                font-size: 20px;
+            }
+            li a:hover:not(.active) {
+                color: white;
+            }
+            .active {
+                color: white;
+            }
+            .page {
+                width: 900px;
+                margin: auto;
+            }
+            .content {
+                float: left;
+                height: 650px;
+                width: 500px;
+                background-color: white;
+            }
+            .col {
+                float: left;
+                width: 50%;
+                margin-top: 20px;
+            }
+            .row::after {
+                content: "";
+                display: table;
+                clear: both;
+            }
+            .c1 {
+                text-align: center;
+                margin-top: 20px;
+                padding-right: 30%;
+            }
+            .horizontal-bar {
+                margin-top: 0px;
+                height: 10px;
+                width: 100%;
+                background-color: black;
+            }
+            .button {
+                background-color: dodgerblue;
+                border: none;
+                color: white;
+                padding: 20px;
+                text-align: center;
+                text-decoration: underline;
+                font-size: 25px;
+                font-family: Tahoma, sans-serif;
+                display: inline-block;
+                margin: 4px 2px;
+                margin-left: 40%;
+                cursor: pointer;
+                width: 350px;
+                height: 70px;
+            }
+            .button1 {border-radius: 15px;}
+            .footer {
+                overflow: hidden;
+                text-align: right;
+            }
+        </style>
     </head>
     <body>
-	<nav>
-		<a href="about.html"> About</a>
-		<a href="contact.html"> Contact</a>
-	</nav>
-        <h1><i>ReadyMedi</i></h1>
+        <header>
+            <ul>
+                <li><a class = "active" style="text-decoration: none"  href="index.html"> Home</a></li>
+                <li><a style="text-decoration: none" href="about.html"> About</a></li>
+                <li><a style="text-decoration: none" href="contact.html">Contact</a></li>
+            </ul>
+        </header>        
+        <h1>ReadyMedi</h1>
+        <div class="row" style="overflow: hidden;">
+            <div class="col">
+                <img src="woman_smiling_at_comp.jpg" alt="woman_smiling_at_comp" style="height: 340px;max-width: 527px; float: right;">
+            </div>
+            <div class="col" style="background-color: #ffffffff;opacity: 70%;height: 340px; max-width: 40%;">
+                <h2 style="text-decoration: underline;text-align: center;font-family: Tahoma, sans-serif;">Welcome</h2>                
+                <p style="font-size: 25px;line-height: 45px;font-family: Tahoma, sans-serif;text-align: center;">
+                    • Not sure on how you are feeling today?
+                <br>
+                    • Are you having symptoms that you are unsure of?
+                <br>
+                    • Need fast health answers?
+                <br>
+                    Use our Health Scanner now!
+                </p>
+            </div>
+        </div>
+        <div class="horizontal-bar">
+        </div>
+        <button class="button button1">
+            <a style="text-decoration: none" href="account.php">
+                Click here to learn more!
+            </a>
+        </button> 
+        <div class ="footer">
+            <a class = "active" style="text-decoration: none" href="index.html">Home</a>
+            <a style="text-decoration: none" href="account.php"> Account</a></li>
+            <a style="text-decoration: none" href="about.html"> About</a></li>
+            <a style="text-decoration: none" href="contact.html"> Contact</a></li>
+        </div>
     </body>
-
 </html>
