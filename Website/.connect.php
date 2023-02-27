@@ -1,8 +1,9 @@
 <?php
+
 //SQL connect
 //Kristine
-
 //connection
+
 
 $server = 'localhost';
 $user = 'readymedi';
