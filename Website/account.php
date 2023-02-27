@@ -74,6 +74,7 @@
         <p>Login or Create an Account</p>
         <div class ="footer">
             <a class = "active" style="text-decoration: none" href="account.php">Account</a>
+            <a style="text-decoration: none" href="demo.php"> Demo</a></li>
             <a style="text-decoration: none" href="index.html"> Home</a></li>
             <a style="text-decoration: none" href="about.html"> About</a></li>
             <a style="text-decoration: none" href="contact.html"> Contact</a></li>
