@@ -85,7 +85,6 @@
         <h1>Demo</h1>
         <div class="page">
 			<?php
-				// check if connected to database
 				// include as it requires connection.
 				include '.connect.php';
 
@@ -96,30 +95,78 @@
 				// $result stores the output from passing the query statement to MDB.
 				$result = $db->query($sql_statement);
 
-				// $row stores the results PERMANENTALY to be used multiple times
+				// $row stores the results PERMANENTALY to be used multiple times,
 				// rather than just query() that only stores temporarily.
 				$row = $result->fetch_assoc();
 
 				// num_rows is a keyword from php? that will store the number of rows received.
 				$times = $result->num_rows;
 
-				//echo "number of rows " . $result->num_rows;
-				//echo "id: " . $row["illid"] . "- name: " . $row["name"] ."- description: " . $row[description];
+                // Define variables and set empty variables
+                $optionErr = "";
+                $option = $_POST["option"];
 
-				for ($i = 1; $i <= $times; $i++){
-					
-					// store new query statement depending on row $i
-					$test = "select * from Illness where illid = $i";
-					//echo "$test\n";
-					
-					// Grab results from the row we're requesting from.
-					$result = $db->query($test);
-					$row = $result->fetch_assoc();
-					
-					// pass collumn name into $row[] to print the wanted info.
-					echo "Illness ID: " . $row["illid"] . "\n" . "Illness Name: " . $row["name"] ."\n" . "Illness Description: " . $row["description"] . "\n\n";
-				}
+                // Error catch
+                if (empty($_POST["option"])) {
+                    $optionErr = "Option selection is required";
+                }
+            /*    
+                // // Run for-loop if "Illness Name" is selected through radio button.
+                else if ($_POST["option"] == "name") {
+                    $option = test_input($_POST["option"]);
+
+                    for ($i = 1; $i <= $times; $i++){
+                        
+                        // store new query statement depending on row $i
+                        $test = "select * from Illness where illid = $i";
+                        //echo "$test\n";
+                        
+                        // Grab results from the row we're requesting from.
+                        $result = $db->query($test);
+                        $row = $result->fetch_assoc();
+                        
+                        // pass collumn name into $row[] to print the wanted info.
+                        echo "Illness ID: " . $row["illid"] . "\n" . "Illness Name: " . $row["name"] ."\n\n";
+                    }
+                }
+                */
+                // Run for-loop if "Illness Description" is selected through radio button.
+           //     else {
+                    for ($i = 1; $i <= $times; $i++){
+                        
+                        // store new query statement depending on row $i
+                        $test = "select * from Illness where illid = $i";
+                        //echo "$test\n";
+                        
+                        // Grab results from the row we're requesting from.
+                        $result = $db->query($test);
+                        $row = $result->fetch_assoc();
+                        
+                        // pass collumn name into $row[] to print the wanted info.
+                        echo "Illness ID: " . $row["illid"] . "\n" . "Illness Name: " . $row["name"] ."\n" . "Illness Description: " . $row["description"] . "\n\n";
+                    }
+            //    }
+                /*     
+                function test_input($data) {
+                    $data = trim($data);
+                    $data = stripslashes($data);
+                    $data = htmlspecialchars($data);
+                    return $data;
+                */
 			?>
+            
+            <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>"> 
+                <br><br>
+                Select one:
+                <input type="radio" name="option" <?php if (isset($option) && $option=="name") echo "checked";?> 
+                value="name">Illness Names
+                    <input type="radio" name="option" <?php if (isset($option) && $option=="description") echo "checked";?> 
+                value="description">Illness Descriptions
+                    <span class="error">* <?php echo $optionErr;?></span>
+                <br><br>
+                <input type="submit" name="submit" value="Click for demo query">
+            </form>
+        
         </div>
         <div class ="footer">
             <a class = "active" style="text-decoration: none" href="demo.php">Demo</a>
