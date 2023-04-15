@@ -1,4 +1,9 @@
 <?php
+
+// included with the PHP form builder at https://github.com/joshcanhelp/php-form-builder
+// probably will use this for debugging and such
+
+
 ini_set( 'display_errors', 1 );
 error_reporting( E_ALL );
 ?>
