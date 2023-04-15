@@ -1,0 +1,50 @@
+CREATE TABLE quiz_questions (
+  id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  question_text VARCHAR(255) NOT NULL,
+  answer1 VARCHAR(255) NOT NULL,
+  answer2 VARCHAR(255) NOT NULL,
+  answer3 VARCHAR(255) NOT NULL,
+  answer4 VARCHAR(255) NOT NULL
+);
+
+INSERT INTO quiz_questions (question_text, answer1, answer2, answer3, answer4)
+VALUES ('Have you experienced headaches?', 'Never', 'Rarely', 'Sometimes', 'Frequently');
+
+INSERT INTO quiz_questions (question_text, answer1, answer2, answer3, answer4)
+VALUES ('Have you experienced coughing?', 'Never', 'Rarely', 'Sometimes', 'Frequently');
+
+INSERT INTO quiz_questions (question_text, answer1, answer2, answer3, answer4)
+VALUES ('Have you experienced sneezing?', 'Never', 'Rarely', 'Sometimes', 'Frequently');
+
+INSERT INTO quiz_questions (question_text, answer1, answer2, answer3, answer4)
+VALUES ('Have you experienced nausea?', 'Never', 'Rarely', 'Sometimes', 'Frequently');
+
+INSERT INTO quiz_questions (question_text, answer1, answer2, answer3, answer4)
+VALUES ('Have you experienced diarrhea?', 'Never', 'Rarely', 'Sometimes', 'Frequently');
+
+INSERT INTO quiz_questions (question_text, answer1, answer2, answer3, answer4)
+VALUES ('How often have you been outside?', 'Less than once a day', '1-2 times a day', '2-3 times a day', 'More than 3 times a day');
+
+INSERT INTO quiz_questions (question_text, answer1, answer2, answer3, answer4)
+VALUES ('Have you been experiencing chest pain?', 'No', 'Mild', 'Moderate', 'Severe');
+
+INSERT INTO quiz_questions (question_text, answer1, answer2, answer3, answer4)
+VALUES ('Have you had trouble sleeping?', 'No', 'Occasionally', 'Frequently', 'Every night');
+
+INSERT INTO quiz_questions (question_text, answer1, answer2, answer3, answer4)
+VALUES ('Have you experienced an unusual amount of tiredness?', 'No', 'Occasionally', 'Frequently', 'Constantly');
+
+INSERT INTO quiz_questions (question_text, answer1, answer2, answer3, answer4)
+VALUES ('Have you experienced nasal congestion?', 'Never', 'Rarely', 'Sometimes', 'Frequently');
+
+INSERT INTO quiz_questions (question_text, answer1, answer2, answer3, answer4)
+VALUES ('Have you experienced a runny nose?', 'Never', 'Rarely', 'Sometimes', 'Frequently');
+
+INSERT INTO quiz_questions (question_text, answer1, answer2, answer3, answer4)
+VALUES ('Have you experienced watery eyes?', 'Never', 'Rarely', 'Sometimes', 'Frequently');
+
+INSERT INTO quiz_questions (question_text, answer1, answer2, answer3, answer4)
+VALUES ('Have you been experiencing hives?', 'No', 'Mild', 'Moderate', 'Severe');
+
+INSERT INTO quiz_questions (question_text, answer1, answer2, answer3, answer4)
+VALUES ('Have you been experiencing muscle aches?', 'No', 'Mild', 'Moderate', 'Severe');
