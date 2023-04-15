@@ -36,7 +36,7 @@
                                 echo "<input type='submit' name='submit' value='Submit'>";
                                 echo "</form>";
                         }
-
+                            
                         // Process form submission 
                         // Display results
                         //      echo "<p>Thank you for taking the quiz. Result functionality pending. .</p>";
