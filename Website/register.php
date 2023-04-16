@@ -1,24 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
+<head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width,initial-scale=1">
-        <title>Account</title>
+        <title>Register User Account</title>
         <link rel="stylesheet" href="style.css">
     </head>
     <body>
         <header>
             <ul>
+                <li><a style="text-decoration: none" href="index.html"> Home</a></li>
+                <li><a style="text-decoration: none" href="about.html"> About</a></li>
+                <li><a style="text-decoration: none" href="login.php"> Login</a></li>
                 <li><a class = "active" style="text-decoration: none"  href="register.php"> Register</a></li>
+                <li><a style="text-decoration: none" href="contact.html">Contact</a></li>
+                
             </ul>
-        </header>        
+        </header>   
+        <h1>Create An Account</h1>    
         <!--Create user account form><!-->
-        <form action="register.php" method="post">
+        <form style ="text-align: center" action="register.php" method="post">
             <input type="text" name="username" value ="" placeholder="Username" required> </br>
             <input type="password" name="password" value ="" placeholder="Password" required> </br>
             <input type="submit" name="Register" value="Register">
         </form>
-        
         <?php
         // PHP Register form resource provided by: Dr. Nick Toothman
         // Currently Commented: will uncomment
@@ -69,11 +74,12 @@
             }
         }
         ?>
-        <h1>Create An Account</h1>
+
         <div class ="footer">
-            <a class = "active" style="text-decoration: none" href="login.php">Login</a>
+            <a class = "active" style="text-decoration: none" href="register.php">Register</a>
             <a style="text-decoration: none" href="index.html"> Home</a></li>
             <a style="text-decoration: none" href="about.html"> About</a></li>
+            <a style="text-decoration: none" href="login.php"> Login</a></li>
             <a style="text-decoration: none" href="contact.html"> Contact</a></li>
         </div>
     </body>
