@@ -1,38 +1,92 @@
 <?php
 
-// check if connected to database
+// included with the PHP form builder at https://github.com/joshcanhelp/php-form-builder
+// probably will use this for debugging and such
+
+
+ini_set( 'display_errors', 1 );
+error_reporting( E_ALL );
+?>
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>PHPFormBuilder test</title>
+</head>
+
+<body>
+		<header>
+            <ul>
+                <li><a style="text-decoration: none" href="index.html"> Home</a></li>
+                <li><a class = "active" style="text-decoration: none" href="about.html"> About</a></li>
+                <li><a style="text-decoration: none" href="contact.html">Contact</a></li>
+            </ul>
+        </header>        
+        <h1>Demo</h1>
+        <div class="page_alt">
+
+<?php
 // include as it requires connection.
 include '.connect.php';
 
-// This var holds the query statement we would like to run in MariaDB
-// The ';' is not required as php sanitizes itself.
-$sql_statement = "Select * from quiz_questions";
+require_once( 'PhpFormBuilder.php' );
 
-// $result stores the output from passing the query statement to MDB.
-$result = $db->query($sql_statement);
+/*
+Create a new instance
+Pass in a URL to set the action
+*/
+$form = new PhpFormBuilder();
 
-// $row stores the results PERMANENTALY to be used multiple times
-// rather than just query() that only stores temporarily.
-$row = $result->fetch_assoc();
+/*
+Form attributes are modified with the set_att function.
+First argument is the setting
+Second argument is the value
+*/
 
-// num_rows is a keyword from php? that will store the number of rows received.
-$times = $result->num_rows;
+$form->set_att('method', 'post');
+$form->set_att('enctype', 'multipart/form-data');
+$form->set_att('markup', 'html');
+$form->set_att('class', 'class_1');
+$form->set_att('class', 'class_2');
+$form->set_att('id', 'a_contact_form');
+$form->set_att('novalidate', true);
+$form->set_att('add_honeypot', true);
+$form->set_att('add_nonce', 'a_contact_form');
+$form->set_att('form_element', true);
+$form->set_att('add_submit', true);
 
-//echo "number of rows " . $result->num_rows;
-//echo "id: " . $row["illid"] . "- name: " . $row["name"] ."- description: " . $row[description];
 
-for ($i = 1; $i <= $times; $i++){
+/*
+Uss add_input to create form fields
+First argument is the name
+Second argument is an array of arguments for the field
+Third argument is an alternative name field, if needed
+*/
+$form->add_input( 'Bad Headline', array(
 	
-	// store new query statement depending on row $i
-	$test = "select * from test_questions where id = $i";
-	//echo "$test\n";
-	
-	// Grab results from the row we're requesting from.
-	$result = $db->query($test);
-	$row = $result->fetch_assoc();
-	
-	// pass collumn name into $row[] to print the wanted info.
-	echo "Question ID: " . $row["id"] . "\n" . "Question: " . $row["question_text"] ."\n" . "Possible Answers: " . $row["answer1"] . "\n\n";
-}
+	'type'    => 'radio',
+	'options' => array(
+		'say_hi_2'     => 'Just saying hi! 2',
+		'complain_2'   => 'I have a bone to pick 2',
+		'offer_gift_2' => 'I\'d like to give you something neat 2',
+	)
+) );
+
+
+/*
+Create the form
+*/
+$form->build_form();
+
+/*
+ * Debugging
+ */
+echo '<pre>';
+print_r( $_REQUEST );
+echo '</pre>';
+echo '<pre>';
+print_r( $_FILES );
+echo '</pre>';
 ?>
-
+</body>
+</html>
