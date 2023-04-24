@@ -31,7 +31,7 @@ include '.connect.php';
 
 // from demo.php, setting up DB variables for later
 $get_questions = "Select quiz_questions.question_text from quiz_questions";
-$result = $db->query($get_questions)
+$result = $db->query($get_questions);
 $row = $result->fetch_assoc();
 $times = $result->num_rows;
 
