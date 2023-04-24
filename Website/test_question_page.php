@@ -22,12 +22,18 @@ error_reporting( E_ALL );
                 <li><a style="text-decoration: none" href="contact.html">Contact</a></li>
             </ul>
         </header>        
-        <h1>Demo</h1>
+        <h1>Demo 2</h1>
         <div class="page_alt">
 
 <?php
 // include as it requires connection.
 include '.connect.php';
+
+// from demo.php, setting up DB variables for later
+$get_questions = "Select quiz_questions.question_text from quiz_questions";
+$result = $db->query($get_questions)
+$row = $result->fetch_assoc();
+$times = $result->num_rows;
 
 require_once( 'PhpFormBuilder.php' );
 
@@ -62,16 +68,27 @@ First argument is the name
 Second argument is an array of arguments for the field
 Third argument is an alternative name field, if needed
 */
-$form->add_input( 'Bad Headline', array(
+
+// iterate for as many questions as there are
+for ($i = 1; $i <= $times; $i++){
+	// gets the quiz question based on its iteration and puts it into $text
+	$text = "Select quiz_questions.question_text from quiz_questions WHERE id = $i";
+	$option1 = "Select quiz_questions.answer1 from quiz_questions WHERE id = $i";
+	$option2 = "Select quiz_questions.answer2 from quiz_questions WHERE id = $i";
+	$option3 = "Select quiz_questions.answer3 from quiz_questions WHERE id = $i";
+	$option4 = "Select quiz_questions.answer4 from quiz_questions WHERE id = $i";
+
+$form->add_input( $text, array(
 	
 	'type'    => 'radio',
 	'options' => array(
-		'say_hi_2'     => 'Just saying hi! 2',
-		'complain_2'   => 'I have a bone to pick 2',
-		'offer_gift_2' => 'I\'d like to give you something neat 2',
+		'option1'     => $option1 ,
+		'option2'   => $option2 ,
+		'option3' => $option3 ,
+		'option4' => $option4 , 
 	)
 ) );
-
+	}
 
 /*
 Create the form
