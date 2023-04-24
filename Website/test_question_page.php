@@ -72,11 +72,11 @@ Third argument is an alternative name field, if needed
 // iterate for as many questions as there are
 for ($i = 1; $i <= $times; $i++){
 	// gets the quiz question based on its iteration and puts it into $text
-	$text = "Select quiz_questions.question_text from quiz_questions WHERE id = $i";
-	$option1 = "Select quiz_questions.answer1 from quiz_questions WHERE id = $i";
-	$option2 = "Select quiz_questions.answer2 from quiz_questions WHERE id = $i";
-	$option3 = "Select quiz_questions.answer3 from quiz_questions WHERE id = $i";
-	$option4 = "Select quiz_questions.answer4 from quiz_questions WHERE id = $i";
+	$text = $db->query("Select quiz_questions.question_text from quiz_questions WHERE id = $i");
+	$option1 = $db->query("Select quiz_questions.answer1 from quiz_questions WHERE id = $i");
+	$option2 = $db->query("Select quiz_questions.answer2 from quiz_questions WHERE id = $i");
+	$option3 = $db->query("Select quiz_questions.answer3 from quiz_questions WHERE id = $i");
+	$option4 = $db->query("Select quiz_questions.answer4 from quiz_questions WHERE id = $i");
 
 $form->add_input( $text, array(
 	
