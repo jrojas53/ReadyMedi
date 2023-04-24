@@ -1,10 +1,78 @@
-<!DOCTYPE html>
+z<!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width,initial-scale=1">
         <title>Demo</title>
-        <link rel="stylesheet" href="style.css">
+        <style>
+            body {
+                background-image: url("summer_background_gradient.jpg");
+                background-size: cover;
+	            background-position: center center;
+	            background-attachment: fixed;                
+            }
+            h1 {
+                text-align: center; 
+                font-family: Tahoma, sans-serif; 
+                color: white; 
+                font-size: 80px; 
+                text-shadow: 2px 2px 5px gray; 
+                margin: 0%;
+            }
+            h2 {
+                text-align: center; 
+                font-family: Tahoma, sans-serif; 
+                color: black; 
+                text-shadow: 2px 2px 5px wheat;
+                font-size: 50px; 
+                margin: 0%;
+            }
+            ul  {
+                list-style-type: none;
+                margin: auto;
+                border: 0;
+                padding: 0;
+                top: 0;
+                overflow: hidden;
+                font-family: Tahoma, sans-serif;
+            }
+            li {
+                float: left;
+                margin-left: 20px;
+            }
+            li a {
+                display: block;
+                color: lightgray;
+                text-align: center;
+                padding: 15px;
+                font-size: 20px;
+            }
+            li a:hover:not(.active) {
+                color: white;
+            }
+            .active {
+                color: white;
+            }
+            .page {
+                height: 650px;
+                width: 100%;
+                background-color: white;
+                opacity: 50%;
+                overflow: auto;
+            }
+            .statement {
+                margin: auto;
+                padding-top: 60px;
+                text-align: center;
+                font-family: Tahoma, sans-serif;
+                font-size: 35px;
+                text-shadow: 2px 2px 5px ghostwhite;                
+            }
+            .footer {
+                overflow: hidden;
+                text-align: right;
+            }
+        </style>
     </head>
     <body>
         <header>
@@ -15,7 +83,7 @@
             </ul>
         </header>        
         <h1>Demo</h1>
-        <div class="page_alt">
+        <div class="page">
 			<?php
 				// include as it requires connection.
 				include '.connect.php';
@@ -35,7 +103,6 @@
 				$times = $result->num_rows;
 
 //                if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                    
                     // Run for-loop if "Illness Name" is selected through radio button.
                     if ($_POST["option"] == "name") {
                       //  $option = test_input($_POST["option"]);
