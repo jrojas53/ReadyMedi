@@ -12,17 +12,33 @@
                 <li><a style="text-decoration: none" href="index.html"> Home</a></li>
                 <li><a style="text-decoration: none" href="about.html"> About</a></li>
                 <li><a class = "active" style="text-decoration: none"  href="login.php"> Login</a></li>
-                <li><a style="text-decoration: none" href="register.php"> Register</a></li>
                 <li><a style="text-decoration: none" href="contact.html">Contact</a></li>
             </ul>
         </header>   
-        <h1>Login</h1>
-        <!--Login Account Form><!-->
-        <form style ="text-align: center" action="login.php" method="post">
-            <input type="text" name="username" value ="" placeholder="Username" required> </br>
-            <input type="password" name="password" value ="" placeholder="Password" required> </br>
-            <input type="submit" name="Login" value="Login">
-        </form>
+        <div class="page_login">
+            <h3>Returning Users</h3>
+            <h4 style="text-align: center"><a style="text-decoration: none" href="register.php"> If you are not a returning user, please click here to register</a></h4>
+                        <h4 style="text-align: center">Please login below</h4>
+            <div class="indiv_2">
+                <!--Comment><h1>Login</h1><!-->
+                <form style ="text-align: center" action="login.php" method="post">
+                    <input type="text" name="username" value ="" placeholder="Username" required> </br>
+                    <input type="password" name="password" value ="" placeholder="Password" required> </br>
+                    <input type="submit" name="Login" value="Login">
+                </form>
+            </div>
+            <div class="horizontal-bar">
+            </div>
+            <div class="indiv_2">
+                <h3>Don't have an account?</h3>
+                <button class="button button2">
+                    <a style="text-decoration: none text-align:center" href="maintenance.html">
+                        Continue as a Guest
+                    </a>
+                </button> 
+            </div>
+        </div>
+
         <?php
         // PHP login form resource provided by: Dr. Nick Toothman
         // Currently Commented: will uncomment
@@ -90,7 +106,6 @@
             <a class = "active" style="text-decoration: none" href="login.php">Login</a>
             <a style="text-decoration: none" href="index.html"> Home</a></li>
             <a style="text-decoration: none" href="about.html"> About</a></li>
-            <a style="text-decoration: none" href="register.php"> Register</a></li>
             <a style="text-decoration: none" href="contact.html"> Contact</a></li>
         </div>
     </body>
