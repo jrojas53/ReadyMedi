@@ -20,6 +20,14 @@ h2 {
     font-size: 50px; 
     margin: 0%;
 }
+h3 {
+    text-align: center; 
+    font-family: Tahoma, sans-serif; 
+    color: black; 
+    text-shadow: 2px 2px 5px wheat;
+    font-size: 50px; 
+    margin: 0%;
+}
 ul  {
     list-style-type: none;
     margin: auto;
@@ -50,8 +58,15 @@ li a:hover:not(.active) {
     width: 900px;
     margin: auto;
 }
-.page_alt{
+.page_alt {
     height: 650px;
+    width: 100%;
+    background-color: white;
+    opacity: 50%;
+    overflow: auto;
+}
+.page_login {
+    height: 550px;
     width: 100%;
     background-color: white;
     opacity: 50%;
@@ -60,6 +75,14 @@ li a:hover:not(.active) {
 .indiv {
     margin: auto;
     padding-top: 60px;
+    text-align: center;
+    font-family: Tahoma, sans-serif;
+    font-size: 40px;
+    text-shadow: 2px 2px 5px ghostwhite;                
+}
+.indiv_2 {
+    margin: auto;
+    padding-top: 0%;
     text-align: center;
     font-family: Tahoma, sans-serif;
     font-size: 40px;
@@ -113,6 +136,15 @@ li a:hover:not(.active) {
 }
 .button1 {
     border-radius: 15px;
+}
+.button2 {
+    background-color: aliceblue;
+    margin: 0;
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
 }
 .footer {
     overflow: hidden;
