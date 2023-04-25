@@ -27,9 +27,10 @@ error_reporting( E_ALL );
 
 <?php
 // include as it requires connection.
-include '.connect.php';
+include 'config.php';
 
 // from demo.php, setting up DB variables for later
+$db = get_connection();
 $get_questions = "Select quiz_questions.question_text from quiz_questions";
 $result = $db->query($get_questions);
 $row = $result->fetch_assoc();
@@ -73,22 +74,30 @@ Third argument is an alternative name field, if needed
 for ($i = 1; $i <= $times; $i++){
 	// gets the quiz question based on its iteration and puts it into $text
 	$text = $db->query("Select quiz_questions.question_text from quiz_questions WHERE id = $i");
-	$option1 = $db->query("Select quiz_questions.answer1 from quiz_questions WHERE id = $i");
-	$option2 = $db->query("Select quiz_questions.answer2 from quiz_questions WHERE id = $i");
-	$option3 = $db->query("Select quiz_questions.answer3 from quiz_questions WHERE id = $i");
-	$option4 = $db->query("Select quiz_questions.answer4 from quiz_questions WHERE id = $i");
+	$textrow = $text->fetch_assoc();
 
-$form->add_input( $text, array(
-	
+	$option1 = $db->query("Select quiz_questions.answer1 from quiz_questions WHERE id = $i");
+	$q1row = $option1->fetch_assoc();
+
+	$option2 = $db->query("Select quiz_questions.answer2 from quiz_questions WHERE id = $i");
+	$q2row = $option2->fetch_assoc();
+
+	$option3 = $db->query("Select quiz_questions.answer3 from quiz_questions WHERE id = $i");
+	$q3row = $option3->fetch_assoc();
+
+	$option4 = $db->query("Select quiz_questions.answer4 from quiz_questions WHERE id = $i");
+	$q4row = $option4->fetch_assoc();
+
+$form->add_input( $textrow[], array(
 	'type'    => 'radio',
 	'options' => array(
-		'option1'     => $option1 ,
-		'option2'   => $option2 ,
-		'option3' => $option3 ,
-		'option4' => $option4 , 
+		'option1'     => $q1row ,
+		'option2'  	 => $q2row ,
+		'option3' => $q3row ,
+		'option4' => $q4row , 
 	)
 ) );
-	}
+}
 
 /*
 Create the form

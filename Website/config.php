@@ -27,4 +27,6 @@ function get_connection() {
 
     return $connection;
 }
+
+require_once("PhpFormBuilder.php");
 ?>
