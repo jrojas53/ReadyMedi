@@ -11,7 +11,8 @@ error_reporting( E_ALL );
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title>PHPFormBuilder test</title>
+	<title>Health Scan</title>
+	<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -22,19 +23,24 @@ error_reporting( E_ALL );
                 <li><a style="text-decoration: none" href="contact.html">Contact</a></li>
             </ul>
         </header>        
-        <h1>Demo 2</h1>
+        <h1>Health Scan</h1>
         <div class="page_alt">
 
 <?php
 // include as it requires connection.
-include 'config.php';
+require_once 'config.php';
 
 // from demo.php, setting up DB variables for later
 $db = get_connection();
-$get_questions = "Select quiz_questions.question_text from quiz_questions";
-$result = $db->query($get_questions);
-$row = $result->fetch_assoc();
-$times = $result->num_rows;
+$query = $db->prepare("select * from quiz_questions WHERE id = ?");
+$i = 1;
+$query->bind_param("i", $i);
+$query->execute();
+$result = $query->get_result();
+$question_data = $result->fetch_all(MYSQLI_ASSOC);
+// print_r($question_data);
+// echo $question_data[0]["answer1"];
+
 
 require_once( 'PhpFormBuilder.php' );
 
@@ -51,16 +57,16 @@ Second argument is the value
 */
 
 $form->set_att('method', 'post');
-$form->set_att('enctype', 'multipart/form-data');
-$form->set_att('markup', 'html');
-$form->set_att('class', 'class_1');
-$form->set_att('class', 'class_2');
-$form->set_att('id', 'a_contact_form');
-$form->set_att('novalidate', true);
-$form->set_att('add_honeypot', true);
-$form->set_att('add_nonce', 'a_contact_form');
-$form->set_att('form_element', true);
-$form->set_att('add_submit', true);
+//$form->set_att('enctype', 'multipart/form-data');
+//$form->set_att('markup', 'html');
+//$form->set_att('class', 'class_1');
+//$form->set_att('class', 'class_2');
+//$form->set_att('id', 'a_contact_form');
+//$form->set_att('novalidate', true);
+//$form->set_att('add_honeypot', true);
+//$form->set_att('add_nonce', 'a_contact_form');
+//$form->set_att('form_element', true);
+//$form->set_att('add_submit', true);
 
 
 /*
@@ -71,7 +77,7 @@ Third argument is an alternative name field, if needed
 */
 
 // iterate for as many questions as there are
-for ($i = 1; $i <= $times; $i++){
+/* for ($i = 1; $i <= $times; $i++){
 	// gets the quiz question based on its iteration and puts it into $text
 	$text = $db->query("Select quiz_questions.question_text from quiz_questions WHERE id = $i");
 	$textrow = $text->fetch_assoc();
@@ -87,21 +93,219 @@ for ($i = 1; $i <= $times; $i++){
 
 	$option4 = $db->query("Select quiz_questions.answer4 from quiz_questions WHERE id = $i");
 	$q4row = $option4->fetch_assoc();
+*/
 
-$form->add_input( $textrow[], array(
+$form->add_input( $question_data[0]["question_text"], array(
 	'type'    => 'radio',
 	'options' => array(
-		'option1'     => $q1row ,
-		'option2'  	 => $q2row ,
-		'option3' => $q3row ,
-		'option4' => $q4row , 
+		'option1'     => $question_data[0]["answer1"] ,
+		'option2'  	 => $question_data[0]["answer2"] ,
+		'option3' => $question_data[0]["answer3"] ,
+		'option4' => $question_data[0]["answer4"] , 
 	)
 ) );
-}
+
+$i++;
+$query->execute();
+$result = $query->get_result();
+$question_data = $result->fetch_all(MYSQLI_ASSOC);
+
+$form->add_input( $question_data[0]["question_text"], array(
+	'type'    => 'radio',
+	'options' => array(
+		'option1'     => $question_data[0]["answer1"] ,
+		'option2'  	 => $question_data[0]["answer2"] ,
+		'option3' => $question_data[0]["answer3"] ,
+		'option4' => $question_data[0]["answer4"] , 
+	)
+) );
+
+$i++;
+$query->execute();
+$result = $query->get_result();
+$question_data = $result->fetch_all(MYSQLI_ASSOC);
+
+$form->add_input( $question_data[0]["question_text"], array(
+	'type'    => 'radio',
+	'options' => array(
+		'option1'     => $question_data[0]["answer1"] ,
+		'option2'  	 => $question_data[0]["answer2"] ,
+		'option3' => $question_data[0]["answer3"] ,
+		'option4' => $question_data[0]["answer4"] , 
+	)
+) );
+
+$i++;
+$query->execute();
+$result = $query->get_result();
+$question_data = $result->fetch_all(MYSQLI_ASSOC);
+
+$form->add_input( $question_data[0]["question_text"], array(
+	'type'    => 'radio',
+	'options' => array(
+		'option1'     => $question_data[0]["answer1"] ,
+		'option2'  	 => $question_data[0]["answer2"] ,
+		'option3' => $question_data[0]["answer3"] ,
+		'option4' => $question_data[0]["answer4"] , 
+	)
+) );
+
+$i++;
+$query->execute();
+$result = $query->get_result();
+$question_data = $result->fetch_all(MYSQLI_ASSOC);
+
+$form->add_input( $question_data[0]["question_text"], array(
+	'type'    => 'radio',
+	'options' => array(
+		'option1'     => $question_data[0]["answer1"] ,
+		'option2'  	 => $question_data[0]["answer2"] ,
+		'option3' => $question_data[0]["answer3"] ,
+		'option4' => $question_data[0]["answer4"] , 
+	)
+) );
+
+$i++;
+$query->execute();
+$result = $query->get_result();
+$question_data = $result->fetch_all(MYSQLI_ASSOC);
+
+$form->add_input( $question_data[0]["question_text"], array(
+	'type'    => 'radio',
+	'options' => array(
+		'option1'     => $question_data[0]["answer1"] ,
+		'option2'  	 => $question_data[0]["answer2"] ,
+		'option3' => $question_data[0]["answer3"] ,
+		'option4' => $question_data[0]["answer4"] , 
+	)
+) );
+
+$i++;
+$query->execute();
+$result = $query->get_result();
+$question_data = $result->fetch_all(MYSQLI_ASSOC);
+
+$form->add_input( $question_data[0]["question_text"], array(
+	'type'    => 'radio',
+	'options' => array(
+		'option1'     => $question_data[0]["answer1"] ,
+		'option2'  	 => $question_data[0]["answer2"] ,
+		'option3' => $question_data[0]["answer3"] ,
+		'option4' => $question_data[0]["answer4"] , 
+	)
+) );
+
+$i++;
+$query->execute();
+$result = $query->get_result();
+$question_data = $result->fetch_all(MYSQLI_ASSOC);
+
+$form->add_input( $question_data[0]["question_text"], array(
+	'type'    => 'radio',
+	'options' => array(
+		'option1'     => $question_data[0]["answer1"] ,
+		'option2'  	 => $question_data[0]["answer2"] ,
+		'option3' => $question_data[0]["answer3"] ,
+		'option4' => $question_data[0]["answer4"] , 
+	)
+) );
+
+$i++;
+$query->execute();
+$result = $query->get_result();
+$question_data = $result->fetch_all(MYSQLI_ASSOC);
+
+$form->add_input( $question_data[0]["question_text"], array(
+	'type'    => 'radio',
+	'options' => array(
+		'option1'     => $question_data[0]["answer1"] ,
+		'option2'  	 => $question_data[0]["answer2"] ,
+		'option3' => $question_data[0]["answer3"] ,
+		'option4' => $question_data[0]["answer4"] , 
+	)
+) );
+
+$i++;
+$query->execute();
+$result = $query->get_result();
+$question_data = $result->fetch_all(MYSQLI_ASSOC);
+
+$form->add_input( $question_data[0]["question_text"], array(
+	'type'    => 'radio',
+	'options' => array(
+		'option1'     => $question_data[0]["answer1"] ,
+		'option2'  	 => $question_data[0]["answer2"] ,
+		'option3' => $question_data[0]["answer3"] ,
+		'option4' => $question_data[0]["answer4"] , 
+	)
+) );
+
+$i++;
+$query->execute();
+$result = $query->get_result();
+$question_data = $result->fetch_all(MYSQLI_ASSOC);
+
+$form->add_input( $question_data[0]["question_text"], array(
+	'type'    => 'radio',
+	'options' => array(
+		'option1'     => $question_data[0]["answer1"] ,
+		'option2'  	 => $question_data[0]["answer2"] ,
+		'option3' => $question_data[0]["answer3"] ,
+		'option4' => $question_data[0]["answer4"] , 
+	)
+) );
+
+$i++;
+$query->execute();
+$result = $query->get_result();
+$question_data = $result->fetch_all(MYSQLI_ASSOC);
+
+$form->add_input( $question_data[0]["question_text"], array(
+	'type'    => 'radio',
+	'options' => array(
+		'option1'     => $question_data[0]["answer1"] ,
+		'option2'  	 => $question_data[0]["answer2"] ,
+		'option3' => $question_data[0]["answer3"] ,
+		'option4' => $question_data[0]["answer4"] , 
+	)
+) );
+
+$i++;
+$query->execute();
+$result = $query->get_result();
+$question_data = $result->fetch_all(MYSQLI_ASSOC);
+
+$form->add_input( $question_data[0]["question_text"], array(
+	'type'    => 'radio',
+	'options' => array(
+		'option1'     => $question_data[0]["answer1"] ,
+		'option2'  	 => $question_data[0]["answer2"] ,
+		'option3' => $question_data[0]["answer3"] ,
+		'option4' => $question_data[0]["answer4"] , 
+	)
+) );
+
+$i++;
+$query->execute();
+$result = $query->get_result();
+$question_data = $result->fetch_all(MYSQLI_ASSOC);
+
+$form->add_input( $question_data[0]["question_text"], array(
+	'type'    => 'radio',
+	'options' => array(
+		'option1'     => $question_data[0]["answer1"] ,
+		'option2'  	 => $question_data[0]["answer2"] ,
+		'option3' => $question_data[0]["answer3"] ,
+		'option4' => $question_data[0]["answer4"] , 
+	)
+) );
+
+//}
 
 /*
 Create the form
 */
+
 $form->build_form();
 
 /*
