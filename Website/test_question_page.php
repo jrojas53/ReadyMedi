@@ -32,7 +32,7 @@ require_once 'config.php';
 
 // from demo.php, setting up DB variables for later
 $db = get_connection();
-$query = $db->prepare("select * from quiz_questions WHERE id = ?");
+$query = $db->prepare("select * from demo_questions WHERE id = ?");
 $i = 1;
 $query->bind_param("i", $i);
 $query->execute();
@@ -100,8 +100,6 @@ $form->add_input( $question_data[0]["question_text"], array(
 	'options' => array(
 		'option1'     => $question_data[0]["answer1"] ,
 		'option2'  	 => $question_data[0]["answer2"] ,
-		'option3' => $question_data[0]["answer3"] ,
-		'option4' => $question_data[0]["answer4"] , 
 	)
 ) );
 
@@ -115,8 +113,6 @@ $form->add_input( $question_data[0]["question_text"], array(
 	'options' => array(
 		'option1'     => $question_data[0]["answer1"] ,
 		'option2'  	 => $question_data[0]["answer2"] ,
-		'option3' => $question_data[0]["answer3"] ,
-		'option4' => $question_data[0]["answer4"] , 
 	)
 ) );
 
@@ -130,8 +126,6 @@ $form->add_input( $question_data[0]["question_text"], array(
 	'options' => array(
 		'option1'     => $question_data[0]["answer1"] ,
 		'option2'  	 => $question_data[0]["answer2"] ,
-		'option3' => $question_data[0]["answer3"] ,
-		'option4' => $question_data[0]["answer4"] , 
 	)
 ) );
 
@@ -145,8 +139,6 @@ $form->add_input( $question_data[0]["question_text"], array(
 	'options' => array(
 		'option1'     => $question_data[0]["answer1"] ,
 		'option2'  	 => $question_data[0]["answer2"] ,
-		'option3' => $question_data[0]["answer3"] ,
-		'option4' => $question_data[0]["answer4"] , 
 	)
 ) );
 
@@ -160,8 +152,6 @@ $form->add_input( $question_data[0]["question_text"], array(
 	'options' => array(
 		'option1'     => $question_data[0]["answer1"] ,
 		'option2'  	 => $question_data[0]["answer2"] ,
-		'option3' => $question_data[0]["answer3"] ,
-		'option4' => $question_data[0]["answer4"] , 
 	)
 ) );
 
@@ -175,8 +165,6 @@ $form->add_input( $question_data[0]["question_text"], array(
 	'options' => array(
 		'option1'     => $question_data[0]["answer1"] ,
 		'option2'  	 => $question_data[0]["answer2"] ,
-		'option3' => $question_data[0]["answer3"] ,
-		'option4' => $question_data[0]["answer4"] , 
 	)
 ) );
 
@@ -190,8 +178,6 @@ $form->add_input( $question_data[0]["question_text"], array(
 	'options' => array(
 		'option1'     => $question_data[0]["answer1"] ,
 		'option2'  	 => $question_data[0]["answer2"] ,
-		'option3' => $question_data[0]["answer3"] ,
-		'option4' => $question_data[0]["answer4"] , 
 	)
 ) );
 
@@ -205,8 +191,6 @@ $form->add_input( $question_data[0]["question_text"], array(
 	'options' => array(
 		'option1'     => $question_data[0]["answer1"] ,
 		'option2'  	 => $question_data[0]["answer2"] ,
-		'option3' => $question_data[0]["answer3"] ,
-		'option4' => $question_data[0]["answer4"] , 
 	)
 ) );
 
@@ -220,8 +204,6 @@ $form->add_input( $question_data[0]["question_text"], array(
 	'options' => array(
 		'option1'     => $question_data[0]["answer1"] ,
 		'option2'  	 => $question_data[0]["answer2"] ,
-		'option3' => $question_data[0]["answer3"] ,
-		'option4' => $question_data[0]["answer4"] , 
 	)
 ) );
 
@@ -235,8 +217,6 @@ $form->add_input( $question_data[0]["question_text"], array(
 	'options' => array(
 		'option1'     => $question_data[0]["answer1"] ,
 		'option2'  	 => $question_data[0]["answer2"] ,
-		'option3' => $question_data[0]["answer3"] ,
-		'option4' => $question_data[0]["answer4"] , 
 	)
 ) );
 
@@ -250,8 +230,6 @@ $form->add_input( $question_data[0]["question_text"], array(
 	'options' => array(
 		'option1'     => $question_data[0]["answer1"] ,
 		'option2'  	 => $question_data[0]["answer2"] ,
-		'option3' => $question_data[0]["answer3"] ,
-		'option4' => $question_data[0]["answer4"] , 
 	)
 ) );
 
@@ -265,8 +243,6 @@ $form->add_input( $question_data[0]["question_text"], array(
 	'options' => array(
 		'option1'     => $question_data[0]["answer1"] ,
 		'option2'  	 => $question_data[0]["answer2"] ,
-		'option3' => $question_data[0]["answer3"] ,
-		'option4' => $question_data[0]["answer4"] , 
 	)
 ) );
 
@@ -280,8 +256,6 @@ $form->add_input( $question_data[0]["question_text"], array(
 	'options' => array(
 		'option1'     => $question_data[0]["answer1"] ,
 		'option2'  	 => $question_data[0]["answer2"] ,
-		'option3' => $question_data[0]["answer3"] ,
-		'option4' => $question_data[0]["answer4"] , 
 	)
 ) );
 
@@ -295,8 +269,32 @@ $form->add_input( $question_data[0]["question_text"], array(
 	'options' => array(
 		'option1'     => $question_data[0]["answer1"] ,
 		'option2'  	 => $question_data[0]["answer2"] ,
-		'option3' => $question_data[0]["answer3"] ,
-		'option4' => $question_data[0]["answer4"] , 
+	)
+) );
+
+$i++;
+$query->execute();
+$result = $query->get_result();
+$question_data = $result->fetch_all(MYSQLI_ASSOC);
+
+$form->add_input( $question_data[0]["question_text"], array(
+	'type'    => 'radio',
+	'options' => array(
+		'option1'     => $question_data[0]["answer1"] ,
+		'option2'  	 => $question_data[0]["answer2"] ,
+	)
+) );
+
+$i++;
+$query->execute();
+$result = $query->get_result();
+$question_data = $result->fetch_all(MYSQLI_ASSOC);
+
+$form->add_input( $question_data[0]["question_text"], array(
+	'type'    => 'radio',
+	'options' => array(
+		'option1'     => $question_data[0]["answer1"] ,
+		'option2'  	 => $question_data[0]["answer2"] ,
 	)
 ) );
 
