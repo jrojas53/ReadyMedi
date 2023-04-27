@@ -29,26 +29,100 @@ error_reporting( E_ALL );
 <?php
 // used for calculating results, demo function
 function checkIllness($hasEyeInfection, $hasEyePain, $hasRashOrHives, $hasTendernessInFace, $hasDiarrhea, $hasRunnyNose, $hasBodyAches, $hasCough, $hasFever, $hasShortnessOfBreath, $hasVomiting, $hasNausea, $hasHeadache, $hasFatigue, $light_sens, $head_side_throb) {
+    $dis_chan = Array("2.00", "4.00", "9.00", "6.00");
+    $disease_chances = array_map("floatval", $dis_chan);
+    $pink_eye_count = 0;
+    $allergies_count = 0;
+    $flu_count = 0;
+    $migraine_count = 0;
+    $true_count = 0;
     
-	if (0) { 
-   	}
-    elseif($hasEyeInfection == true && $hasEyePain == true || $hasEyeInfection == false && $hasEyePain == true || $hasEyeInfection == true && $hasEyePain == false) {
-  		 return "You have pink eye.";	
-	}
-    // Check if the user has allergies
-     elseif($hasEyePain == false && $hasRashOrHives == true && $hasTendernessInFace == true && $hasDiarrhea == false && ($hasRunnyNose == true || $hasRunnyNose == false)) {
-        return "You have allergies.";
+    if ($hasEyeInfection) {
+        $pink_eye_count++;
+        $true_count++;
     }
-    // Check if the user has flu
-    elseif ($hasRunnyNose == true && $hasBodyAches == true && $hasCough == true && $hasFever == true && ($hasShortnessOfBreath == true || $hasShortnessOfBreath == false) && ($hasVomiting == true || $hasVomiting == false) && ($hasNausea == true || $hasNausea == false) && ($hasHeadache == true || $hasHeadache == false) && ($hasFatigue == false)) {
-        return "You have the flu.";
+    if ($hasEyePain) {
+        $pink_eye_count++;
+        $true_count++;
     }
-    // Check if the user has migraine
-    elseif (($hasFatigue == true || $hasFatigue == false) && ($hasVomiting == true || $hasVomiting == false) && ($hasNausea == true || $hasNausea == false) && ($hasHeadache == true || $hasHeadache == false) && $light_sens == true && $head_side_throb == true) {
-        return "You have migraine.";
+    if ($hasRashOrHives) {
+        $allergies_count++;
+        $true_count++;
     }
-    else {
-    	return "Sorry your information does not match any known illnesses in our database. Please see a doctor at your earliest convenience.";
+    if ($hasTendernessInFace) {
+        $allergies_count++;
+        $true_count++;
+    }
+    if ($hasDiarrhea) {
+        $allergies_count++;
+        $true_count++;
+    }
+    if ($hasRunnyNose) {
+        $allergies_count++;
+        $flu_count++;
+        $true_count++;
+    }
+    if ($hasBodyAches) {
+        $flu_count++;
+        $true_count++;
+    }
+    if ($hasCough) {
+        $flu_count++;
+        $true_count++;
+    }
+    if ($hasFever) {
+        $flu_count++;
+        $true_count++;
+    }
+    if ($hasShortnessOfBreath) {
+        $flu_count++;
+        $true_count++;
+    }
+    if ($head_side_throb) {
+        $migraine_count++;
+        $true_count++;
+    }
+    if ($hasFatigue) {
+        $migraine_count++;
+        $flu_count++;
+        $true_count++;
+    }
+    if ($hasVomiting) {
+        $migraine_count++;
+        $flu_count++;
+        $true_count++;
+    }
+    if ($hasNausea) {
+        $migraine_count++;
+        $flu_count++;
+        $true_count++;
+    }
+    if ($hasHeadache) {
+        $migraine_count++;
+        $flu_count++;
+        $true_count++;
+    }
+    
+    $disease_chances[0] = $pink_eye_count / 2;
+    $disease_chances[1] = $allergies_count / 4;
+    $disease_chances[2] = $flu_count / 9;
+    $disease_chances[3] = $migraine_count / 6;
+    
+    $maxs = array_keys($disease_chances, max($disease_chances));
+    if ($true_count == 0 || $true_count == 16) {
+        return "Sorry your information does not match any known illnesses in our database. Please see a doctor at your earliest convenience";
+    }
+    if ($maxs[0] == 0) {
+        return "You most likely have pink eye.";
+    }
+    if ($maxs[0] == 1) {
+        return "You most likely have allergies.";
+    }
+    if ($maxs[0] == 2) {
+        return "You most likely have the flu.";
+    }
+    if ($maxs[0] == 3) {
+        return "You most likely have migraine.";
     }
 }
 
