@@ -32,7 +32,7 @@
             <div class="indiv_2">
                 <h3>Don't have an account?</h3>
                 <button class="button button2">
-                    <a style="text-decoration: none text-align:center" href="maintenance.html">
+                    <a style="text-decoration: none text-align:center" href="test_question_page.php">
                         Continue as a Guest
                     </a>
                 </button> 
@@ -69,10 +69,9 @@
                     while($statement->fetch()) {
                         $result_count++;
                     }
-
                     if($result_count == 0) {
                         $_SESSION["error"] = "Error: Username and/or password entered was not found";
-                        header("Location: register.php");
+                        header("Location: login.php");
                     }
                     else {
                         //Verify user password
@@ -83,11 +82,11 @@
                             $_SESSION["username"] = $res_user;
                             
                             //Change when quiz page is up and live
-                            header("Location: maintenance.html");
+                            header("Location: test_question_page.php");
                         }
                         else {
                             $_SESSION["error"] = "Error: Username and/or password entered was not found";
-                            header("Location: register.php");
+                            header("Location: login.php");
                         }
                     }
                 }
