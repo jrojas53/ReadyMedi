@@ -62,25 +62,61 @@
                 $_SESSION["error"] = "Username and/or Password CANNOT be empty!";
                 header("Location: register.php");
             }
+			
+			
 
             if ($statement = $db->prepare("INSERT INTO User (username, password, f_Name, l_Name, email) VALUES (?, ?, ?, ?, ?)")) {
 				$passHash = password_hash($password, PASSWORD_DEFAULT);
 				$statement->bind_param('sssss', $username, $passHash, $fName, $lName, $email);
 
+				//test echos
+				echo "First name: $fName<br>";
+				echo "Last name: $lName<br>";
+				echo "Username: $username<br>";
+				echo "PassHash: $passHash<br>";
+				echo "Email: $email<br>";
+
+
 				if ($statement->execute()) {
 					$result_Obj = $statement->get_result();
-					$result = $result_Obj->fetch_assoc();		// "Uncaught Error: Call to a member function fetch_assoc() on bool ..."
+					//$result = $result_Obj->fetch_assoc();		// "Uncaught Error: Call to a member function fetch_assoc() on bool ..."
 					
+				
 					//If error occurs, redirect page back to register.php
-					if (is_null($result["user_id"])) {
-						$_SESSION["error"] = $result["Error"];
-						header("Location: register.php");
-					}
+					//if (is_null($result["user_id"])) {
+						//$_SESSION["error"] = $result["Error"];
+						//$_SESSION["error"] = "User_ID is blank<br>\n";
+						//header("Location: register.php");
+					//}
 					
-					else {
+					//else {
 						echo "Account has been registered!";
-						header("Location: login.php");
-					}
+						
+						// sql to create table
+						$sql = "CREATE TABLE $username (
+												  test_ID int AUTO_INCREMENT,
+												  PRIMARY KEY (test_ID),
+												  first_ill char(225),
+												  first_percent int,
+												  sec_ill char(225),
+												  sec_percent int,
+												  third_ill char(225),
+												  third_percent int,
+												  symptoms char(225) );";
+												  // will insert symptom result string in 'currentQuiz.php'
+
+						echo "<br>Sql Statement: $sql <br>\n";
+						// prompt MariaDB to create a new table
+						if ($db->query($sql)) {
+							echo "<br>Table was created successfully.<br>";
+							// redirect to login page
+							//header("Location: login.php");
+						}
+						
+						else {
+							echo "<br>Error creating table: " . mysqli_error($db);
+						}
+					//}
 				}
 				
 				// Catches duplicate usernames
@@ -88,14 +124,7 @@
 					echo "Result Error: " . mysqli_error($db);
 				}
 			}
-			
-			$newTable = $db->prepare("CREATE TABLE $username (
-									  uID INT(20) AUTO_INCREMENT PRIMARY KEY,
-									  )");
         }
-		
-		
-		
         ?>
 		
         <div class ="footer">
