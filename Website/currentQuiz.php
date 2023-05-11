@@ -298,7 +298,11 @@
 					}
 				}
 
+				//reset values to 0 and empty
 				unset($symptom_string);
+				$symptom_array_index = 0;
+
+				//print_r($symptom_array);
 
 				for ($i = 0; $i < $symptom_count; $i++){
 
@@ -316,7 +320,9 @@
 						//echo "name: $name<br>\n";
 
 						// if at the start of the array, concatinate existing string with symptom
-						if (ISSET($symptom_array_index[0]) && $symptom_array_index == 0) {
+						//echo "Symptom array index 0: $symptom_array[0]<br>\n";
+						//echo "symptom array index: $symptom_array_index<br>\n";
+						if (ISSET($symptom_array[0]) && $symptom_array_index == 0) {
 							$symptom_string = $symptom_string.$name;
 							//echo "new string: $symptom_string<br>\n";
 						}
@@ -324,9 +330,11 @@
 						// Otherwise, concatinate with a comma
 						//else if ($symptom_array_index[$a] = NULL) {
 						else {
-							$symptom_string = ", ".$name.$symptom_string;
+							$symptom_string = $symptom_string.", ".$name;
 							//echo "new string2: $symptom_string<br>\n";
 						}
+
+						$symptom_array_index++;
 
 					}
 				}
