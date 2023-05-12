@@ -1,22 +1,35 @@
 body {
-    background-image: url("summer_background_gradient.jpg");
-    background-size: cover;
+    /*background-image: url("summer_background_gradient.jpg");*/
+    /*background-image: url("yellow_background.jpg");*/
+    background-color: whitesmoke;
+    /*background-size: cover;
     background-position: center center;
-    background-attachment: fixed;                
+    background-attachment: fixed; */
+    margin: 0;      
+}
+.banner {
+    background-image: url("w_s_w_c_c_l_1.png");
+    width: 100%;
+    height: 80vh;
+    background-size: cover;
+    background-position: center 80px;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    margin-top: 30px;
 }
 h1 {
     text-align: center; 
     font-family: Tahoma, sans-serif; 
-    color: white; 
+    color: gold; 
     font-size: 80px; 
-    text-shadow: 2px 2px 5px gray; 
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000,-1px 1px 0 #000,1px 1px 0 #000;
     margin: 0%;
+    outline: 1px;
 }
 h2 {
     text-align: center; 
     font-family: Tahoma, sans-serif; 
     color: black; 
-    text-shadow: 2px 2px 5px wheat;
     font-size: 50px; 
     margin: 0%;
 }
@@ -24,35 +37,42 @@ h3 {
     text-align: center; 
     font-family: Tahoma, sans-serif; 
     color: black; 
-    text-shadow: 2px 2px 5px wheat;
     font-size: 50px; 
     margin: 0%;
 }
 ul  {
     list-style-type: none;
-    margin: auto;
+    margin: 0;
     border: 0;
     padding: 0;
     top: 0;
     overflow: hidden;
     font-family: Tahoma, sans-serif;
+    background-color: black;
 }
 li {
     float: left;
-    margin-left: 20px;
+    border-right: 1px solid #bbb;
+    /*margin-left: 20px;*/
+}
+li:last-child {
+    border-right: none;
 }
 li a {
     display: block;
-    color: lightgray;
+    color: white;
+    /*color: lightgray;*/
     text-align: center;
     padding: 15px;
     font-size: 20px;
 }
 li a:hover:not(.active) {
-    color: white;
+    color: black;
+    background-color: greenyellow;
 }
 .active {
-    color: white;
+    /*color: white;*/
+    background-color: blue;
 }
 .page {
     width: 900px;
@@ -62,14 +82,12 @@ li a:hover:not(.active) {
     height: 650px;
     width: 100%;
     background-color: white;
-    opacity: 50%;
     overflow: auto;
 }
 .page_login {
     height: 550px;
     width: 100%;
     background-color: white;
-    opacity: 50%;
     overflow: auto;
 }
 .indiv {
@@ -145,8 +163,4 @@ li a:hover:not(.active) {
     left: 50%;
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
-}
-.footer {
-    overflow: hidden;
-    text-align: right;
 }
