@@ -53,7 +53,6 @@
             unset($_SESSION["error"]);
             die();
         }
-
         //If true, login user with input data
         if (isset($_POST['Login'])) {
             unset($_POST['Login']);
@@ -65,7 +64,7 @@
 
             //Execute SQL Statement
             if ($statement->execute()) {
-                if (mysqli_stmt_bind_result($statement, $res_id, $res_user, $res_password)) {
+                if (mysqli_stmt_bind_result($statement, $res_id, $res_user, $res_password, $res_fname, $res_lname, $res_email)) {
                     $result_count = 0;
                     while($statement->fetch()) {
                         $result_count++;
@@ -79,11 +78,12 @@
                         $isGood = password_verify($password, $res_password);
 
                         if ($isGood) {
+                            //start session for active user
                             $_SESSION["user_id"] = $res_id;
                             $_SESSION["username"] = $res_user;
                             
-                            //Change when quiz page is up and live
-                            header("Location: currentQuiz.php");
+                            //Direct user to user dashboard
+                            header("Location:homepage.php");
                         }
                         else {
                             $_SESSION["error"] = "Error: Username and/or password entered was not found";
