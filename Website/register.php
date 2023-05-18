@@ -11,24 +11,37 @@
             <ul>
                 <li><a style="text-decoration: none" href="index.html"> Home</a></li>
                 <li><a style="text-decoration: none" href="about.html"> About</a></li>
-                <li><a style="text-decoration: none" href="login.php"> Login</a></li>
                 <li><a class = "active" style="text-decoration: none"  href="register.php"> Register</a></li>
                 <li><a style="text-decoration: none" href="contact.html">Contact</a></li>
-                
+                <li style="float:right"><a class="active" href="login.php">Login</a></li>
             </ul>
-        </header>   
-        <h1>Create An Account</h1>    
+        </header>     
         <!--Create user account form-->
-        <form style ="text-align: center" action="register.php" method="post">
-			<input type="text" name="f_Name" value ="" placeholder="First name" required> </br>
-			<input type="text" name="l_Name" value ="" placeholder="Last name" required> </br>
-			<input type="text" name="email" value ="" placeholder="Email address" required> </br></br>
-			
-            <input type="text" name="username" value ="" placeholder="Username" required> </br>
-            <input type="password" name="password" value ="" placeholder="Password" required> </br>
-            <input type="submit" name="Register" value="Register">
-        </form>
-		
+        <div class ="page_login">
+        <h3>New Users</h3>
+        <h4 style="text-align: center">Please register below*</h4>
+            <form style ="text-align: center" action="register.php" method="post">
+                <p style="margin: 0%"> First Name</p>
+                    <input type="text" name="f_Name" value ="" placeholder="First name" required> </br>
+                <p style="margin: 0%"> Last Name</p>
+                    <input type="text" name="l_Name" value ="" placeholder="Last name" required> </br>
+                <p style="margin: 0%"> Email Address</p>
+                    <input type="text" name="email" value ="" placeholder="Email address" required> </br></br>
+                <p style="margin: 0%"> Username</p>
+                    <input type="text" name="username" value ="" placeholder="Username" required> </br>
+                <p style="margin: 0%"> Password</p>
+                    <input type="password" name="password" value ="" placeholder="Password" required> </br>
+                <input type="submit" name="Register" value="Register">
+            </form>
+            <p style="text-align: center; font-family: Tahoma, sans-serif;">
+                *Disclaimer: The information provided on this medical website is for general informational purposes only and is not intended to be a substitute for professional medical advice, diagnosis, or treatment. The content of this website is not meant to be a substitute for a medical consultation with a qualified healthcare professional.
+                Furthermore, this website does not endorse any specific medical treatment, product, or service. Always seek the advice of a qualified healthcare professional with any questions you may have regarding a medical condition. Never disregard professional medical advice or delay seeking it because of something you have read on this website.
+                The information provided on this website may not be accurate, complete, or up-to-date and should not be relied upon as such. This website does not guarantee the accuracy or completeness of any information provided on the site.
+                In addition, this website may contain links to other websites that are not controlled or maintained by us. We are not responsible for the content of any such external websites and do not endorse any information contained therein.
+                By registering and using this website, you acknowledge and agree that you have read this disclaimer and understand its contents. You further agree to hold harmless and indemnify this website and its owners, agents, and affiliates from any claims, damages, or liabilities arising from your use of this website or reliance on any information provided herein.
+            </p>
+        </div>
+
         <?php
         // PHP Register form resource provided by: Dr. Nick Toothman
         // Currently Commented: will uncomment
@@ -129,13 +142,5 @@
 			}
         }
         ?>
-		
-        <div class ="footer">
-            <a class = "active" style="text-decoration: none" href="register.php">Register</a>
-            <a style="text-decoration: none" href="index.html"> Home</a></li>
-            <a style="text-decoration: none" href="about.html"> About</a></li>
-            <a style="text-decoration: none" href="login.php"> Login</a></li>
-            <a style="text-decoration: none" href="contact.html"> Contact</a></li>
-        </div>
     </body>
 </html>

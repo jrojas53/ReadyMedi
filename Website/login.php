@@ -13,12 +13,13 @@
                 <li><a style="text-decoration: none" href="about.html"> About</a></li>
                 <li><a class = "active" style="text-decoration: none"  href="login.php"> Login</a></li>
                 <li><a style="text-decoration: none" href="contact.html">Contact</a></li>
+                <li style="float:right"><a class="active" href="register.php">Register</a></li>
             </ul>
         </header>   
         <div class="page_login">
             <h3>Returning Users</h3>
             <h4 style="text-align: center"><a style="text-decoration: none" href="register.php"> If you are not a returning user, please click here to register</a></h4>
-                        <h4 style="text-align: center">Please login below</h4>
+                <h4 style="text-align: center">Please login below</h4>
             <div class="indiv_2">
                 <!--Comment><h1>Login</h1><!-->
                 <form style ="text-align: center" action="login.php" method="post">
@@ -59,7 +60,6 @@
             unset($_SESSION["error"]);
             die();
         }
-
         //If true, login user with input data
         if (isset($_POST['Login'])) {
             unset($_POST['Login']);
@@ -71,7 +71,7 @@
 
             //Execute SQL Statement
             if ($statement->execute()) {
-                if (mysqli_stmt_bind_result($statement, $res_id, $res_user, $res_password)) {
+                if (mysqli_stmt_bind_result($statement, $res_id, $res_user, $res_password, $res_fname, $res_lname, $res_email)) {
                     $result_count = 0;
                     while($statement->fetch()) {
                         $result_count++;
@@ -85,13 +85,14 @@
                         $isGood = password_verify($password, $res_password);
 
                         if ($isGood) {
+                            //start session for active user
                             $_SESSION["user_id"] = $res_id;
                             $_SESSION["username"] = $res_user;
 							
 							$_SESSION["active"] = true;
                             
-                            //Change when quiz page is up and live
-                            header("Location: test_question_page.php");
+                            //Direct user to user dashboard
+                            header("Location:homepage.php");
                         }
                         else {
                             $_SESSION["error"] = "Error: Username and/or password entered was not found";
@@ -111,11 +112,5 @@
         }
 		//}
         ?>
-        <div class ="footer">
-            <a class = "active" style="text-decoration: none" href="login.php">Login</a>
-            <a style="text-decoration: none" href="index.html"> Home</a></li>
-            <a style="text-decoration: none" href="about.html"> About</a></li>
-            <a style="text-decoration: none" href="contact.html"> Contact</a></li>
-        </div>
     </body>
 </html>

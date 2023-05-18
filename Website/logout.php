@@ -3,25 +3,39 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width,initial-scale=1">
-        <title>Account</title>
+        <title>Logout</title>
         <link rel="stylesheet" href="style.css">
     </head>
     <body>
         <header>
             <ul>
-                <li><a class = "active" style="text-decoration: none"  href="logout.php"> Logout</a></li>
+            <li><a style="text-decoration: none" href="index.html"> Home</a></li>
+                <li><a style="text-decoration: none" href="about.html"> About</a></li>
+                <li><a style="text-decoration: none" href="contact.html">Contact</a></li>
+                <li style="float:right"><a class="active" href="login.php">Login</a></li>
             </ul>
         </header>        
-        <?php
-            
-        ?>
-        <h1>Thank you for visiting our site!</h1>
-        
-        <div class ="footer">
-        <a class = "active" style="text-decoration: none" href="register.php">Register</a></li>
-            <a style="text-decoration: none" href="index.html"> Home</a></li>
-            <a style="text-decoration: none" href="about.html"> About</a></li>
-            <a style="text-decoration: none" href="contact.html"> Contact</a></li>
-        </div>
+            <?php
+                //PHP Code Reference were provided by Dr.Toothman
+                date_default_timezone_set('America/Los_Angeles');
+                if(session_status() === PHP_SESSION_NONE) {
+                    session_start();
+                }
+                session_unset();
+                /*Delete Session Cookie along with PHP Session
+                Reference Source: 
+                https://www.geeksforgeeks.org/
+                session_unset-vs-session_destroy-in-php/#
+                */
+                if (ini_get("session.use_cookies")) {
+                    $params = session_get_cookie_params();
+                    setcookie(session_name(), '', time() - 42000,
+                        $params["path"], $params["domain"],
+                        $params["secure"], $params["httponly"]
+                    );
+                }
+                session_destroy();
+                header("Location: login.php");
+            ?>
     </body>
 </html>
