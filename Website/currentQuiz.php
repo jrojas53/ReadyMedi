@@ -7,87 +7,18 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width,initial-scale=1">
-        <title>ReadyMedi | Quiz Time! (K-demo)</title>
-		<h3>(Krissy's Test Demo)</h2>
-        <style>
-            body {
-                background-image: url("summer_background_gradient.jpg");
-                background-size: cover;
-	            background-position: center center;
-	            background-attachment: fixed;                
-            }
-            h1 {
-                text-align: center; 
-                font-family: Tahoma, sans-serif; 
-                color: white; 
-                font-size: 80px; 
-                text-shadow: 2px 2px 5px gray; 
-                margin: 0%;
-            }
-            h2 {
-                text-align: center; 
-                font-family: Tahoma, sans-serif; 
-                color: black; 
-                text-shadow: 2px 2px 5px wheat;
-                font-size: 50px; 
-                margin: 0%;
-            }
-            ul  {
-                list-style-type: none;
-                margin: auto;
-                border: 0;
-                padding: 0;
-                top: 0;
-                overflow: hidden;
-                font-family: Tahoma, sans-serif;
-            }
-            li {
-                float: left;
-                margin-left: 20px;
-            }
-            li a {
-                display: block;
-                color: lightgray;
-                text-align: center;
-                padding: 15px;
-                font-size: 20px;
-            }
-            li a:hover:not(.active) {
-                color: white;
-            }
-            .active {
-                color: white;
-            }
-            .page {
-                height: 650px;
-                width: 100%;
-                background-color: white;
-                opacity: 50%;
-                overflow: auto;
-            }
-            .statement {
-                margin: auto;
-                padding-top: 60px;
-                text-align: center;
-                font-family: Tahoma, sans-serif;
-                font-size: 35px;
-                text-shadow: 2px 2px 5px ghostwhite;                
-            }
-            .footer {
-                overflow: hidden;
-                text-align: right;
-            }
-        </style>
+        <title>Questions</title>
+        <link rel="stylesheet" href="style.css">
     </head>
     <body>
         <header>
-            <ul>
-                <li><a style="text-decoration: none" href="index.html"> Home</a></li>
-                <li><a class = "active" style="text-decoration: none" href="about.html"> About</a></li>
-                <li><a style="text-decoration: none" href="contact.html">Contact</a></li>
+			<ul>
+                <li><a class = "active" style="text-decoration: none"  href="currentQuiz.php"> Start Over</a></li>
+                <li><a style="text-decoration: none" href="homepage.php">Account</a></li>
+                <li style="float:right"><a class="active" href="logout.php">Logout</a></li>
             </ul>
         </header>
-        <h1>Demo Quiz</h1>
+        <h1>Health Scan</h1>
         <div class="page">
 			<?php
 				/*	Building off from Kristine's (me) demo.php
@@ -392,14 +323,6 @@
 				
 				
 			?>
-        </div>
-		<!-- Footer Links --> 
-        <div class ="footer">
-            <a class = "active" style="text-decoration: none" href="demo.php">Demo</a>
-            <a style="text-decoration: none" href="index.html"> Home</a></li>
-            <a style="text-decoration: none" href="account.php"> Account</a></li>
-            <a style="text-decoration: none" href="about.html"> About</a></li>
-            <a style="text-decoration: none" href="contact.html"> Contact</a></li>
         </div>
     </body>
 </html>
