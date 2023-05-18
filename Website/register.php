@@ -57,15 +57,18 @@
 			
 			
             //check if username and/or password fields are emtpy
-            if (strlen($username) == 0 || strlen($password) == 0 || strlen($fName) == 0 || strlen($lName) == 0 || strlen($email) == 0) {
+            if (strlen($username) == 0 || strlen($password) == 0 
+				|| strlen($fName) == 0 || strlen($lName) == 0 || strlen($email) == 0) {
                 //Redirect user to complete any missing fields
                 $_SESSION["error"] = "Username and/or Password CANNOT be empty!";
                 header("Location: register.php");
             }
 			
-			
-
-            if ($statement = $db->prepare("INSERT INTO User (username, password, f_Name, l_Name, email) VALUES (?, ?, ?, ?, ?)")) {
+			// insert register data into the User table
+			// https://www.php.net/manual/en/mysqli.quickstart.prepared-statements.php
+			// https://stackoverflow.com/questions/48083402/how-to-do-prepared-statements-with-php
+            if ($statement = $db->prepare("INSERT INTO User (username, password, 
+										  f_Name, l_Name, email) VALUES (?, ?, ?, ?, ?)")) {
 				$passHash = password_hash($password, PASSWORD_DEFAULT);
 				$statement->bind_param('sssss', $username, $passHash, $fName, $lName, $email);
 
@@ -79,8 +82,8 @@
 
 				if ($statement->execute()) {
 					$result_Obj = $statement->get_result();
-					//$result = $result_Obj->fetch_assoc();		// "Uncaught Error: Call to a member function fetch_assoc() on bool ..."
-					
+					// "Uncaught Error: Call to a member function fetch_assoc() on bool ..."
+					//$result = $result_Obj->fetch_assoc();
 				
 					//If error occurs, redirect page back to register.php
 					//if (is_null($result["user_id"])) {

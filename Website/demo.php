@@ -118,7 +118,8 @@ z<!DOCTYPE html>
                             $row = $result->fetch_assoc();
                             
                             // pass collumn name into $row[] to print the wanted info.
-                            echo "Illness ID: " . $row["illid"] . "\n" . "Illness Name: " . $row["name"] ."\n\n";
+                            echo "Illness ID: " . $row["illid"] . "\n" .
+								 "Illness Name: " . $row["name"] ."\n\n";
                         }
                     }
                     
@@ -135,7 +136,9 @@ z<!DOCTYPE html>
                             $row = $result->fetch_assoc();
                             
                             // pass collumn name into $row[] to print the wanted info.
-                            echo "Illness ID: " . $row["illid"] . "\n" . "Illness Name: " . $row["name"] ."\n" . "Illness Description: " . $row["description"] . "\n\n";
+                            echo "Illness ID: " . $row["illid"] . "\n" . 
+								 "Illness Name: " . $row["name"] ."\n" . 
+								 "Illness Description: " . $row["description"] . "\n\n";
                         }
                     }
 //                }

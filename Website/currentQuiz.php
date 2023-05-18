@@ -90,25 +90,31 @@
         <h1>Demo Quiz</h1>
         <div class="page">
 			<?php
+			SESSION_START();
+			 if ($_SESSION_START["active"]) {
+				
 				/*	Building off from Kristine's (me) demo.php
 				 * check if connected to database
 				 * include as it requires connection. */
 				include '.connect.php';
+				/* Setting up subqueries
+				 * https://stackoverflow.com/questions/4691257/subquery-in-php
+				 * Setting Up Inner Joins:
+				 * https://www.w3schools.com/mysql/mysql_join_inner.asp */
 				
 				/* This var holds the query statement we would like to run in MariaDB
 				 * We will count through all of the rows in the id column in demo_questions */
-				$sql = "select count(question_text) 
-						from (select distinct question_text 
-							from demo_questions inner join Illness_Symptoms 
-								where demo_questions.question_ID = Illness_Symptoms.question_ID) 
-						as questions";
+				$sql = "SELECT count(question_text) 
+						FROM (SELECT distinct question_text 
+							FROM demo_questions INNER JOIN Illness_Symptoms 
+								WHERE demo_questions.question_ID = Illness_Symptoms.question_ID) 
+						AS questions";
 						
 				//echo "SQL statement for total question count: $sql <br>\n";
 				
 				/* if the result exists,
 				 * $result stores the output from passing the query statement to MDB. */
 				if ($result = $db->query($sql)) {
-					
 					/* $row stores the results PERMANENTALY to be used multiple times
 					 * rather than just query() that only stores temporarily. */
 					$row = $result->fetch_assoc();
@@ -116,24 +122,28 @@
 					// store the number of rows received after counting.
 					$questionCount = $row['count(question_text)'];
 					//echo "count for question subquery: $questionCount<br>\n";
-					
-	// *************** WILL NEED TO SANITIZE!!!!!!!!! ***************
 					// post is calling array
 					// action - will send to <>
 					echo "<form method='post' action='currentQuiz.php'><br>\n";
 					
 					// Print questions with radio buttons
+					/* Row_Number Function:
+					 * https://www.mysqltutorial.org/mysql-window-functions/mysql-row_number-function/ */
 					for ($i = 1; $i <= $questionCount; $i++) {
-						
 						//echo "<br>SQL Statement: $sql<br>\n";
 						
+						/* Setting up subqueries
+						 * https://stackoverflow.com/questions/4691257/subquery-in-php
+						 * Setting Up Inner Joins:
+						 * https://www.w3schools.com/mysql/mysql_join_inner.asp */						 
+						
 						//$sql = "SELECT * FROM  demo_questions WHERE question_ID = $i";
-						$sql = "Select question_text, answer1, answer2, name, sympid 
-									from (select ROW_NUMBER() OVER (order by question_text) as count, question_text, answer1, answer2, name, sympid 
-											from (select distinct question_text, answer1, answer2, name,sympid from demo_questions 
-												inner join Illness_Symptoms 
-											where demo_questions.question_ID = Illness_Symptoms.question_ID) as origin)
-								as cool where count = $i;";
+						$sql = "SELECT question_text, answer1, answer2, name, sympid 
+									FROM (SELECT ROW_NUMBER() OVER (ORDER BY question_text) AS count, question_text, answer1, answer2, name, sympid 
+											FROM (SELECT DISTINCT question_text, answer1, answer2, name, sympid FROM demo_questions 
+												INNER JOIN Illness_Symptoms 
+											WHERE demo_questions.question_ID = Illness_Symptoms.question_ID) AS origin)
+								AS cool WHERE count = $i;";
 						
 						//echo "Giant Row numberization for Unique questions: $sql<br>\n";
 						
@@ -162,12 +172,16 @@
 							// https://www.w3schools.com/php/php_ajax_poll.asp
 						}
 						
+						else {
+							echo "Error: Could not connect/retrieve data from questions table.";
+						}
+						
 					}
 					
 				}
 				
 				else {
-					// uhuhuhuhuh
+					echo "Error: Could not connect/retrieve data from questions table.";
 				}
 				
 				// Submit button at the bottom of all the questions
@@ -220,40 +234,34 @@
 				$illness_array_index = 0;
 				$illness_string = '';
 				
-
 				$symptom_count = count($symptom_array);
 				//echo "count of total symptoms selected: $symptom_count<br>\n";
 
 				for ($i = 0; $i < $symptom_count; $i++){
-
 					$symptom_id = $symptom_array[$i];
 					//echo "Symptom Name @ index $i = $symptom_id<br>\n";
-
-					$sql = "select count(illid) as count from Illness_Symptoms where sympid = $symptom_id;";
+					$sql = "SELECT count(illid) AS count FROM Illness_Symptoms WHERE sympid = $symptom_id;";
 					//echo "sql statment for count of potential illnessess: $sql<br>\n";
 
 					if ($result = $db->query($sql)){
-
 						$row = $result->fetch_assoc();
-
 						$illness_total = $row['count'];
 						//echo "Illess total: $illness_total<br>\n";
 
 						for ($t = 1; $t <= $illness_total; $t++){
-
-							$sql = "select illid from (select row_number() over (order by illid) as count, illid from Illness_Symptoms where sympid = '$symptom_id') as cool where count = $t;";
+							/* Row_Number Function:
+							 * https://www.mysqltutorial.org/mysql-window-functions/mysql-row_number-function/ */
+							$sql = "SELECT illid FROM (select ROW_NUMBER() 
+									OVER (order by illid) AS count, illid FROM Illness_Symptoms 
+									WHERE sympid = '$symptom_id') as cool where count = $t;";
 							//echo "SQL Statement: $sql<br>\n";
 
 							if ($result = $db->query($sql)){
-
 								$row = $result->fetch_assoc();
-
 								$current_illness = $row['illid'];
 								//echo "current illness: $current_illness<br>\n";
-
 								$illness_array[$illness_array_index] = $current_illness;
 								//echo "illness_array @ index $illness_array_index: $current_illness<br>\n";
-
 								$illness_array_index++;
 							}
 						}
@@ -263,7 +271,9 @@
 				//echo "Potential Illnesses array";
 				//print_r($illness_array);
 				//echo "<br>\n";
-
+				
+				/* Array Count examples:
+				 * https://www.w3schools.com/php/func_array_count_values.asp	*/		
 				$sorted_illness_array = array_count_values($illness_array);
 				//echo "Sorted Illness Array";
 				//print_r($sorted_illness_array);
@@ -271,10 +281,18 @@
 
 				$max_percent = 0;
 				$max_illness = '';
+				
 
+				
 				foreach($sorted_illness_array as $illness => $illness_occurance){
 
-					$sql = "select count(sympid) as count, Illness.name from Illness inner join Illness_Symptoms where Illness.illid = Illness_Symptoms.illid and Illness_Symptoms.illid = $illness;";
+					/* Setting Up Inner Joins:
+					 * https://www.w3schools.com/mysql/mysql_join_inner.asp */
+
+					$sql = "SELECT count(sympid) as count, Illness.name FROM Illness 
+							INNER JOIN Illness_Symptoms 
+							WHERE Illness.illid = Illness_Symptoms.illid 
+							AND Illness_Symptoms.illid = $illness;";
 					//echo "count of total symptoms for illness: $sql<br>\n";
 
 					if($result = $db->query($sql)) {
@@ -294,7 +312,6 @@
 							//echo "Max percentage: $max_percent<br>\n";
 							//echo "Max Illness Name: $max_illness_name<br><br>\n";
 						}
-
 					}
 				}
 
@@ -309,13 +326,11 @@
 					$acquired_symptom = $symptom_array[$i];
 					//echo "acquired symptom: $acquired_symptom<br>\n";
 
-					$sql = "select name from Illness_Symptoms where sympid = '$acquired_symptom';";
+					$sql = "SELECT name FROM Illness_Symptoms WHERE sympid = '$acquired_symptom';";
 					//echo "Sql: $sql<br>\n";
 
 					if ($result = $db->query($sql)){
-
 						$row = $result->fetch_assoc();
-
 						$name = $row['name'];
 						//echo "name: $name<br>\n";
 
@@ -333,24 +348,35 @@
 							$symptom_string = $symptom_string.", ".$name;
 							//echo "new string2: $symptom_string<br>\n";
 						}
-
 						$symptom_array_index++;
-
 					}
 				}
 
-				
+				// test echos
 				echo "Highest Illness: $max_illness<br>\n";
 				echo "Max percentage: $max_percent<br>\n";
 				echo "Max Illness Name: $max_illness_name<br><br>\n";
 				echo "<br><br>Symptom Array: $symptom_string<br><br>\n";
 				
-		
-
+				// Insert Quiz data into unqiue user table
+					// WILL REQUIRE TO CHECK FOR ACTIVE SESSION TO GET UNIQUE USERNAME
 				
+				/*
+				// ***************************************************************
+				$userTable = $_POST['']; // ???
 				
+				if ($statement = $db->prepare("INSERT INTO $userTable (first_ill, first_percent, symptoms) VALUES (?, ?, ?)"))) {
+					$statement->bind_param('sss', $max_illness_name, $max_percent, $symptom_string);
+					
+					// test echos
+					echo "<br><br>Current user: $userTable<br>";
+					echo "Inserted illness: $max_illness<br>";
+					echo "Inserted percentage: $max_percent<br>";
+					echo "Inserted string: $symptom_string<br>";
+				}
 				
-				
+				// ***************************************************************
+				*/
 				/*
 				
 				// ==========> Print out related illnesses <----------------
@@ -387,10 +413,13 @@
 						}
 						
 						$symptom_array_index++;
-					}
+						}
                     }*/
 				
-				
+			} // <------------
+			else{
+				header("location:login.php");
+			}
 			?>
         </div>
 		<!-- Footer Links --> 

@@ -32,7 +32,7 @@
             <div class="indiv_2">
                 <h3>Don't have an account?</h3>
                 <button class="button button2">
-                    <a style="text-decoration: none text-align:center" href="test_question_page.php">
+                    <a style="text-decoration: none" href="test_question_page.php">
                         Continue as a Guest
                     </a>
                 </button> 
@@ -40,6 +40,13 @@
         </div>
 
         <?php
+		
+		//SESSION_START();
+		//if ($_SESSION["active"] == true){
+			
+			//header("location: index.html");
+		//}
+		//else{
         // PHP login form resource provided by: Dr. Nick Toothman
         // Currently Commented: will uncomment
         // when register.php is ready to be 
@@ -80,6 +87,8 @@
                         if ($isGood) {
                             $_SESSION["user_id"] = $res_id;
                             $_SESSION["username"] = $res_user;
+							
+							$_SESSION["active"] = true;
                             
                             //Change when quiz page is up and live
                             header("Location: test_question_page.php");
@@ -100,6 +109,7 @@
                 die();
             }
         }
+		//}
         ?>
         <div class ="footer">
             <a class = "active" style="text-decoration: none" href="login.php">Login</a>
